@@ -15,7 +15,9 @@
             flex-direction: column;
             align-items: center;
             height: 100vh;
+            justify-content: center; /* Centers everything vertically */
             text-align: center;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         /* Invisible Top Bar */
@@ -47,12 +49,13 @@
 
         /* Main Content Style */
         .main-content {
-            margin-top: 80px; /* Adjust for fixed top bar */
             padding: 15px;
             background-color: #2e2e2e;
             border-radius: 8px;
             width: 80%;
             max-width: 600px;
+            position: relative; /* Keeps it in front of dashboard */
+            z-index: 2; /* Ensures it stays above the dashboard */
         }
 
         h1 {
@@ -83,27 +86,22 @@
             background-color: #0872d4; /* Darker blue on hover */
         }
 
-        /* Dashboard Style */
+        /* Dashboard Style - Full screen, behind main content */
         .dashboard-content {
             display: none;
-            margin-top: 80px; /* Adjust for fixed top bar */
-            padding: 20px;
+            position: absolute; /* Takes full screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-color: #000; /* Black background */
-            border-radius: 8px;
-            width: 80%;
-            max-width: 600px;
+            z-index: 1; /* Sends it behind the main content */
         }
 
         .active {
             display: block;
         }
 
-        /* Label Styling */
-        .label {
-            font-size: 1.2em;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
@@ -115,7 +113,6 @@
     <div class="main-content">
         <h1>Rabbit LLC</h1>
         <p>A Roblox server-side executor.</p>
-        <div class="label">Status: Active</div>
         <button class="continue-btn" onclick="window.open('https://discord.gg/fUdfKhyKJJ', '_blank')">Continue</button>
     </div>
 
