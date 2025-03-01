@@ -82,14 +82,14 @@
         .dashboard-content {
             display: none;
             position: absolute;
-            top: 10%; /* Adjust top position */
-            left: 5%; /* Adjust left position */
-            width: 250px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Black background */
             z-index: 1;
             padding: 20px;
             color: white;
-            border-radius: 8px;
             transition: transform 0.4s ease; /* Smooth transition */
         }
 
@@ -98,12 +98,13 @@
             transform: scale(1); /* Add scaling effect when shown */
         }
 
-        /* Dashboard buttons positioned horizontally */
+        /* Dashboard buttons positioned at top-left */
         .dashboard-buttons {
             display: flex;
-            justify-content: center;
             gap: 20px;
-            margin-top: 10px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
         }
 
         .dashboard-buttons button {
@@ -126,12 +127,12 @@
             background-color: #033c59; /* Turn darker when pressed */
         }
 
-        /* Close button style at the top right */
+        /* Close button style at the top-right */
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5em;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
             color: #ffffff;
             background: transparent;
             border: none;
@@ -206,7 +207,7 @@
     <div class="dashboard-content" id="dashboard-content">
         <button class="close-btn" onclick="toggleDashboard()">×</button>
         
-        <!-- Dashboard buttons positioned horizontally -->
+        <!-- Dashboard buttons positioned horizontally at top-left -->
         <div class="dashboard-buttons">
             <button onclick="goHome()">Home</button>
             <button onclick="showInfo()">Info</button>
