@@ -98,11 +98,12 @@
             transform: scale(1); /* Add scaling effect when shown */
         }
 
-        /* Button Style inside Dashboard */
+        /* Dashboard buttons positioned horizontally */
         .dashboard-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
         }
 
         .dashboard-buttons button {
@@ -123,6 +124,23 @@
 
         .dashboard-buttons button:active {
             background-color: #033c59; /* Turn darker when pressed */
+        }
+
+        /* Close button style at the top right */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: #ffffff;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #ff6347; /* Change color on hover */
         }
 
         /* Notification Style */
@@ -186,8 +204,9 @@
 
     <!-- Dashboard Content (hidden initially) -->
     <div class="dashboard-content" id="dashboard-content">
-        <button class="dashboard-btn" onclick="toggleDashboard()">Close Dashboard</button>
+        <button class="close-btn" onclick="toggleDashboard()">×</button>
         
+        <!-- Dashboard buttons positioned horizontally -->
         <div class="dashboard-buttons">
             <button onclick="goHome()">Home</button>
             <button onclick="showInfo()">Info</button>
