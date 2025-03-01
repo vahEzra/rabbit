@@ -22,32 +22,6 @@
             transition: all 0.3s ease; /* Smooth transition */
         }
 
-        /* .top-bar {
-            width: 100%;
-            background-color: transparent; 
-            padding: 10px 20px;
-            display: flex;
-            justify-content: flex-start;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
-        .dashboard-btn {
-            background-color: transparent; 
-            color: #ffffff;
-            font-size: 0.8em; 
-            padding: 6px 14px;
-            border: 1px solid #ffffff; 
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .dashboard-btn:hover {
-            background-color: #0856a4; 
-        } */
-
         .dashboard-btn {
             background-color: transparent;
             color: #ffffff;
@@ -173,7 +147,7 @@
 </head>
 <body>
     <div class="top-bar" id="top-bar">
-        <button class="dashboard-btn" onclick="toggleDashboard()">Dashboard</button>
+        <button class="dashboard-btn" id="dashboard-btn" onclick="toggleDashboard()">Dashboard</button>
     </div>
 
     <!-- Main Content -->
@@ -199,12 +173,15 @@
         function toggleDashboard() {
             const dashboardContent = document.getElementById('dashboard-content');
             const topBar = document.getElementById('top-bar');
+            const dashboardBtn = document.getElementById('dashboard-btn');
             dashboardContent.classList.toggle('active');
+            
             // Hide main content when dashboard is shown
             const mainContent = document.querySelector('.main-content');
             mainContent.style.display = dashboardContent.classList.contains('active') ? 'none' : 'block';
+            
             // Hide dashboard button when in dashboard
-            topBar.style.display = dashboardContent.classList.contains('active') ? 'none' : 'block';
+            dashboardBtn.style.display = dashboardContent.classList.contains('active') ? 'none' : 'block';
         }
 
         // Show notification after 1 second, sways in, and after 8 seconds, sways out
