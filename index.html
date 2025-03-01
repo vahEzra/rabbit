@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rabbit LLC</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome for icons -->
     <style>
         body {
             background-color: #1f1f1f;
@@ -111,7 +112,7 @@
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 0.8em; /* Smaller text */
             display: flex;
             align-items: center;
             z-index: 3;
@@ -119,13 +120,27 @@
             transition: all 0.6s ease;
         }
 
-        .notification i {
+        .notification .icon {
             margin-right: 10px;
             font-size: 1.5em;
         }
 
         .notification .text {
             color: #1c2b56; /* Darker shade of royal blue */
+            margin-right: 10px;
+        }
+
+        .notification .dismiss-btn {
+            background-color: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .notification .dismiss-btn:hover {
+            opacity: 0.7;
         }
 
         /* Animation classes */
@@ -159,8 +174,9 @@
 
     <!-- Notification -->
     <div class="notification" id="notification">
-        <i>(i)</i>
+        <i class="fas fa-info-circle icon"></i>
         <div class="text">Welcome to Rabbit Web!</div>
+        <button class="dismiss-btn" onclick="dismissNotification()">×</button>
     </div>
 
     <script>
@@ -180,6 +196,12 @@
             }, 8000);
 
         }, 1000); // Wait for 1 second to show notification
+
+        // Dismiss notification
+        function dismissNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('sway-out');
+        }
     </script>
 </body>
 </html>
