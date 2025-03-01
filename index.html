@@ -98,9 +98,10 @@
             transform: scale(1); /* Add scaling effect when shown */
         }
 
-        /* Dashboard buttons positioned at top-left */
+        /* Dashboard buttons positioned vertically at top-left */
         .dashboard-buttons {
             display: flex;
+            flex-direction: column; /* Make buttons vertical */
             gap: 20px;
             position: absolute;
             top: 20px;
@@ -207,7 +208,7 @@
     <div class="dashboard-content" id="dashboard-content">
         <button class="close-btn" onclick="toggleDashboard()">×</button>
         
-        <!-- Dashboard buttons positioned horizontally at top-left -->
+        <!-- Dashboard buttons positioned vertically at top-left -->
         <div class="dashboard-buttons">
             <button onclick="goHome()">Home</button>
             <button onclick="showInfo()">Info</button>
