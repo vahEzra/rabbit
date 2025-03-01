@@ -171,9 +171,7 @@
 
     <!-- Dashboard Content (hidden initially) -->
     <div class="dashboard-content" id="dashboard-content">
-        <button onclick="closeDashboard()">Close Dashboard</button>
-        <h2>Dashboard</h2>
-        <p>Dashboard content will be here soon.</p>
+        <button class="dashboard-btn" onclick="toggleDashboard()">Close Dashboard</button>
     </div>
 
     <!-- Notification -->
@@ -190,13 +188,6 @@
             // Hide main content when dashboard is shown
             const mainContent = document.querySelector('.main-content');
             mainContent.style.display = dashboardContent.classList.contains('active') ? 'none' : 'block';
-        }
-
-        function closeDashboard() {
-            const dashboardContent = document.getElementById('dashboard-content');
-            dashboardContent.classList.remove('active');
-            const mainContent = document.querySelector('.main-content');
-            mainContent.style.display = 'block'; // Show main content again
         }
 
         // Show notification after 1 second, sways in, and after 8 seconds, sways out
