@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome for icons -->
     <style>
         body {
-            background-color: #1f1f1f;
+            background: linear-gradient(to right, #1f1f1f, #2c2c2c); /* Gradient background */
             color: #f0f0f0;
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -16,15 +16,15 @@
             flex-direction: column;
             align-items: center;
             height: 100vh;
-            justify-content: center; /* Centers everything vertically */
+            justify-content: center;
             text-align: center;
-            overflow: hidden; /* Prevent scrolling */
+            overflow: hidden;
+            transition: all 0.3s ease; /* Smooth transition */
         }
 
-        /* Invisible Top Bar */
-        .top-bar {
+        /* .top-bar {
             width: 100%;
-            background-color: transparent; /* Invisible */
+            background-color: transparent; 
             padding: 10px 20px;
             display: flex;
             justify-content: flex-start;
@@ -34,36 +34,52 @@
         }
 
         .dashboard-btn {
-            background-color: transparent; /* Transparent background */
+            background-color: transparent; 
             color: #ffffff;
-            font-size: 0.8em; /* Smaller button text */
+            font-size: 0.8em; 
             padding: 6px 14px;
-            border: 1px solid #ffffff; /* Border around button */
+            border: 1px solid #ffffff; 
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
         .dashboard-btn:hover {
-            background-color: #0856a4; /* Blue on hover */
+            background-color: #0856a4; 
+        } */
+
+        .dashboard-btn {
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 1em;
+            padding: 8px 18px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Hover effect */
+        }
+
+        .dashboard-btn:hover {
+            background-color: #0856a4;
+            transform: scale(1.05); /* Slightly grow on hover */
         }
 
         /* Main Content Style */
         .main-content {
-            padding: 15px;
-            background-color: #2e2e2e;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 600px;
-            position: relative; /* Keeps it in front of dashboard */
-            z-index: 2; /* Ensures it stays above the dashboard */
+            padding: 20px;
+            background-color: #3c3c3c;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 650px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
         }
 
         h1 {
-            color: #ff6347; /* Tomato color */
-            font-size: 2em;
+            color: #ff6347;
+            font-size: 2.5em;
             margin-bottom: 0.5em;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         p {
@@ -72,49 +88,52 @@
         }
 
         .continue-btn {
-            background-color: transparent; /* Transparent background */
+            background-color: transparent;
             color: #ffffff;
             font-size: 1em;
-            padding: 10px 20px;
-            border: 1px solid #ffffff; /* Border around button */
+            padding: 12px 25px;
+            border: 1px solid #ffffff;
             cursor: pointer;
             margin-top: 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .continue-btn:hover {
-            background-color: #0872d4; /* Darker blue on hover */
+            background-color: #0872d4;
+            transform: scale(1.05);
         }
 
         /* Dashboard Style - Full screen, behind main content */
         .dashboard-content {
             display: none;
-            position: absolute; /* Takes full screen */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000; /* Black background */
-            z-index: 1; /* Sends it behind the main content */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+            z-index: 1;
             padding: 20px;
             color: white;
+            transition: transform 0.4s ease; /* Smooth transition */
         }
 
-        .active {
+        .dashboard-content.active {
             display: block;
+            transform: scale(1); /* Add scaling effect when shown */
         }
 
         /* Notification Style */
         .notification {
             position: fixed;
             bottom: 20px;
-            left: -400px; /* Start off-screen */
-            background-color: royalblue; /* Royal Blue background */
+            left: 20px;
+            background: linear-gradient(to right, #5c6bc0, #3949ab); /* Gradient background */
             color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 0.8em; /* Smaller text */
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
             display: flex;
             align-items: center;
             z-index: 3;
@@ -123,20 +142,15 @@
         }
 
         .notification .icon {
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
-
-        .notification .text {
-            color: #1c2b56; /* Darker shade of royal blue */
-            margin-right: 10px;
+            margin-right: 15px;
+            font-size: 1.8em;
         }
 
         .notification .dismiss-btn {
             background-color: transparent;
             border: none;
             color: #ffffff;
-            font-size: 1.2em;
+            font-size: 1.6em;
             cursor: pointer;
             transition: opacity 0.3s ease;
         }
@@ -158,6 +172,11 @@
     </style>
 </head>
 <body>
+    <!-- .top-bar {
+        <div class="top-bar">
+            <button class="dashboard-btn" onclick="toggleDashboard()">Dashboard</button>
+        </div>
+    --> 
     <div class="top-bar">
         <button class="dashboard-btn" onclick="toggleDashboard()">Dashboard</button>
     </div>
