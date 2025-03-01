@@ -97,6 +97,8 @@
             height: 100%;
             background-color: #000; /* Black background */
             z-index: 1; /* Sends it behind the main content */
+            padding: 20px;
+            color: white;
         }
 
         .active {
@@ -169,7 +171,9 @@
 
     <!-- Dashboard Content (hidden initially) -->
     <div class="dashboard-content" id="dashboard-content">
-        <!-- No content yet, just black background -->
+        <button onclick="closeDashboard()">Close Dashboard</button>
+        <h2>Dashboard</h2>
+        <p>Dashboard content will be here soon.</p>
     </div>
 
     <!-- Notification -->
@@ -183,6 +187,16 @@
         function toggleDashboard() {
             const dashboardContent = document.getElementById('dashboard-content');
             dashboardContent.classList.toggle('active');
+            // Hide main content when dashboard is shown
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.display = dashboardContent.classList.contains('active') ? 'none' : 'block';
+        }
+
+        function closeDashboard() {
+            const dashboardContent = document.getElementById('dashboard-content');
+            dashboardContent.classList.remove('active');
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.display = 'block'; // Show main content again
         }
 
         // Show notification after 1 second, sways in, and after 8 seconds, sways out
