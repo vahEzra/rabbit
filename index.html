@@ -172,12 +172,7 @@
     </style>
 </head>
 <body>
-    <!-- .top-bar {
-        <div class="top-bar">
-            <button class="dashboard-btn" onclick="toggleDashboard()">Dashboard</button>
-        </div>
-    --> 
-    <div class="top-bar">
+    <div class="top-bar" id="top-bar">
         <button class="dashboard-btn" onclick="toggleDashboard()">Dashboard</button>
     </div>
 
@@ -203,10 +198,13 @@
     <script>
         function toggleDashboard() {
             const dashboardContent = document.getElementById('dashboard-content');
+            const topBar = document.getElementById('top-bar');
             dashboardContent.classList.toggle('active');
             // Hide main content when dashboard is shown
             const mainContent = document.querySelector('.main-content');
             mainContent.style.display = dashboardContent.classList.contains('active') ? 'none' : 'block';
+            // Hide dashboard button when in dashboard
+            topBar.style.display = dashboardContent.classList.contains('active') ? 'none' : 'block';
         }
 
         // Show notification after 1 second, sways in, and after 8 seconds, sways out
