@@ -102,6 +102,42 @@
             display: block;
         }
 
+        /* Notification Style */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: -400px; /* Start off-screen */
+            background-color: royalblue; /* Royal Blue background */
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            z-index: 3;
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .notification i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        .notification .text {
+            color: #1c2b56; /* Darker shade of royal blue */
+        }
+
+        /* Animation classes */
+        .show {
+            opacity: 1;
+            left: 20px; /* Sways in to the left */
+        }
+
+        .sway-out {
+            left: -400px; /* Move out to the left */
+        }
+
     </style>
 </head>
 <body>
@@ -121,11 +157,29 @@
         <!-- No content yet, just black background -->
     </div>
 
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i>(i)</i>
+        <div class="text">Welcome to Rabbit Web!</div>
+    </div>
+
     <script>
         function toggleDashboard() {
             const dashboardContent = document.getElementById('dashboard-content');
             dashboardContent.classList.toggle('active');
         }
+
+        // Show notification after 1 second, sways in, and after 8 seconds, sways out
+        setTimeout(() => {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+
+            // After 8 seconds, start swaying out
+            setTimeout(() => {
+                notification.classList.add('sway-out');
+            }, 8000);
+
+        }, 1000); // Wait for 1 second to show notification
     </script>
 </body>
 </html>
