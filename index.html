@@ -18,20 +18,23 @@
             text-align: center;
         }
 
-        /* Top Bar Style */
+        /* Invisible Top Bar */
         .top-bar {
             width: 100%;
-            background-color: #333;
+            background-color: transparent; /* Invisible */
             padding: 10px 20px;
             display: flex;
             justify-content: flex-start;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
 
         .dashboard-btn {
             background-color: #808080; /* Gray */
             color: #ffffff;
-            font-size: 1.2em;
-            padding: 10px 20px;
+            font-size: 0.9em; /* Smaller button */
+            padding: 8px 16px;
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -42,10 +45,9 @@
             background-color: #0856a4; /* Blue on hover */
         }
 
-        /* Content Style */
-        .content {
-            display: none;
-            margin-top: 20px;
+        /* Main Content Style */
+        .main-content {
+            margin-top: 80px; /* Adjust for fixed top bar */
             padding: 20px;
             background-color: #2e2e2e;
             border-radius: 8px;
@@ -53,13 +55,9 @@
             max-width: 600px;
         }
 
-        .active {
-            display: block;
-        }
-
         h1 {
             color: #ff6347; /* Tomato color */
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 0.5em;
             font-weight: 600;
         }
@@ -84,22 +82,52 @@
         .continue-btn:hover {
             background-color: #0872d4; /* Darker blue on hover */
         }
+
+        /* Dashboard Style */
+        .dashboard-content {
+            display: none;
+            margin-top: 80px; /* Adjust for fixed top bar */
+            padding: 20px;
+            background-color: #000; /* Black background */
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Label Styling */
+        .label {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
     <div class="top-bar">
         <button class="dashboard-btn" onclick="toggleDashboard()">Dashboard</button>
     </div>
-    <div class="content" id="dashboard-content">
+
+    <!-- Main Content -->
+    <div class="main-content">
         <h1>Rabbit LLC</h1>
         <p>A Roblox server-side executor.</p>
+        <div class="label">Status: Active</div>
         <button class="continue-btn" onclick="window.open('https://discord.gg/fUdfKhyKJJ', '_blank')">Continue</button>
+    </div>
+
+    <!-- Dashboard Content (hidden initially) -->
+    <div class="dashboard-content" id="dashboard-content">
+        <!-- No content yet, just black background -->
     </div>
 
     <script>
         function toggleDashboard() {
-            const content = document.getElementById('dashboard-content');
-            content.classList.toggle('active');
+            const dashboardContent = document.getElementById('dashboard-content');
+            dashboardContent.classList.toggle('active');
         }
     </script>
 </body>
